@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>科研蛋白表达与核酸酶 | 重组蛋白表达与 Cas9/Cas12a/T7 RNA 聚合酶</title>
+<meta name="description" content="面向高校与科研院所提供重组蛋白表达、纯化服务，并供应 Cas9、Cas12a、T7 RNA 聚合酶等核酸相关酶，支持定制表达与批量订购。">
+<style>
+:root {
+  --primary: #0b6e4f;
+  --primary-dark: #07513a;
+  --bg: #f7faf9;
+  --text: #1f2933;
+  --muted: #5f6c72;
+  --card: #ffffff;
+  --border: #e3e8e6;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+}
+a { color: inherit; text-decoration: none; }
+.container { width: min(1120px, 92%); margin: 0 auto; }
+
+header {
+  background: rgba(255,255,255,.94);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.logo { font-weight: 800; color: var(--primary); font-size: 1.2rem; letter-spacing: .5px; }
+.nav-links { display: flex; gap: 1.1rem; align-items: center; font-size: .95rem; flex-wrap: wrap; }
+.nav-links a:hover { color: var(--primary); }
+.menu-btn {
+  display: none;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .4rem .7rem;
+  cursor: pointer;
+  font: inherit;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--primary);
+  color: #fff;
+  padding: .7rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: .2s;
+  font: inherit;
+}
+.btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
+.btn-outline { background: transparent; color: var(--primary); border: 1px solid var(--primary); }
+.btn-outline:hover { background: #eef8f3; }
+
+.hero {
+  padding: 4.5rem 0 3.5rem;
+  background: linear-gradient(135deg, #eef8f3 0%, #f7faf9 60%, #fff 100%);
+}
+.hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.2; letter-spacing: -.02em; max-width: 820px; }
+.hero p { color: var(--muted); font-size: 1.1rem; max-width: 720px; margin: 1.2rem 0 1.8rem; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+section { padding: 4rem 0; }
+.section-title { font-size: 1.8rem; margin-bottom: .6rem; }
+.section-desc { color: var(--muted); margin-bottom: 2rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 18px rgba(15, 60, 40, .04);
+}
+.card h3 { font-size: 1.1rem; margin-bottom: .5rem; color: var(--primary-dark); }
+.card p { color: var(--muted); font-size: .95rem; }
+
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; counter-reset: step; }
+.step {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.4rem;
+  position: relative;
+}
+.step::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  top: -12px;
+  left: 18px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: .85rem;
+}
+.step h4 { margin: .4rem 0 .3rem; }
+.step p { color: var(--muted); font-size: .9rem; }
+
+.contact-wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: 2rem; align-items: start; }
+.contact-info p { margin-bottom: .8rem; color: var(--muted); }
+.contact-info strong { color: var(--text); }
+
+form {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+label { display: block; font-size: .9rem; font-weight: 600; margin-bottom: .35rem; }
+input, textarea, select {
+  width: 100%;
+  padding: .75rem .9rem;
+  border: 1px solid #cfd8d5;
+  border-radius: 8px;
+  font: inherit;
+  margin-bottom: 1rem;
+  background: #fff;
+}
+textarea { min-height: 110px; resize: vertical; }
+
+.faq-item {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.2rem 1.4rem;
+  margin-bottom: .8rem;
+}
+.faq-item h3 { font-size: 1rem; margin-bottom: .4rem; color: var(--primary-dark); }
+.faq-item p { color: var(--muted); font-size: .95rem; }
+
+footer { background: #10251d; color: #c9d6d1; padding: 2.5rem 0; font-size: .9rem; }
+footer a { color: #fff; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; }
+.footer-grid p { margin: .3rem 0; }
+
+@media (max-width: 800px) {
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    padding: 1rem 4%;
+    border-bottom: 1px solid var(--border);
+    gap: .8rem;
+  }
+  .menu-btn { display: block; }
+  .contact-wrap, .footer-grid { grid-template-columns: 1fr; }
+  .hero { padding: 3rem 0 2.5rem; }
+  section { padding: 3rem 0; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#">科研蛋白表达与核酸酶</a>
+    <button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('open')">菜单</button>
+    <nav class="nav-links">
+      <a href="#services">蛋白表达</a>
+      <a href="#nucleases">核酸酶产品</a>
+      <a href="#process">流程</a>
+      <a href="#delivery">交付</a>
+      <a href="#why">优势</a>
+      <a href="#faq">问答</a>
+      <a href="#contact">询价</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <h1>科研蛋白表达与核酸酶产品</h1>
+      <p>面向高校、科研院所和医院研究团队，提供重组蛋白表达、纯化服务，并供应 Cas9、Cas12a、T7 RNA 聚合酶等核酸相关酶。支持定制表达与批量订购。</p>
+      <div class="hero-actions">
+        <a class="btn" href="#contact">获取报价</a>
+        <a class="btn btn-outline" href="#nucleases">查看核酸酶产品</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="container">
+    <h2 class="section-title">蛋白表达服务</h2>
+    <p class="section-desc">根据蛋白类型、产量、纯度和活性要求，选择合适的表达系统与纯化方案。</p>
+    <div class="grid">
+      <div class="card">
+        <h3>原核表达</h3>
+        <p>大肠杆菌表达，适合可溶性蛋白、包涵体表达，周期短，成本相对较低。</p>
+      </div>
+      <div class="card">
+        <h3>酵母表达</h3>
+        <p>毕赤酵母、酿酒酵母表达，适合真核蛋白、分泌表达和部分翻译后修饰。</p>
+      </div>
+      <div class="card">
+        <h3>昆虫 / 杆状病毒表达</h3>
+        <p>适合复杂真核蛋白、膜蛋白和需要翻译后修饰的蛋白。</p>
+      </div>
+      <div class="card">
+        <h3>哺乳动物细胞表达</h3>
+        <p>HEK293、CHO 等系统，适合抗体、糖蛋白和活性要求较高的蛋白。</p>
+      </div>
+      <div class="card">
+        <h3>蛋白纯化</h3>
+        <p>His、GST、MBP、Strep 等标签亲和纯化，以及离子交换、分子筛等方案。</p>
+      </div>
+      <div class="card">
+        <h3>复性与检测</h3>
+        <p>包涵体复性、内毒素去除、SDS-PAGE、Western Blot 和活性验证。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="nucleases">
+    <div class="container">
+      <h2 class="section-title">核酸酶产品</h2>
+      <p class="section-desc">自产核酸相关酶，批次稳定，支持科研试用和批量订购。以下为常用产品，其他酶可咨询。</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Cas9 核酸酶</h3>
+          <p>来源于 Streptococcus pyogenes，提供 His 标签或标签切除版本，适用于基因编辑、体外切割等实验。</p>
+        </div>
+        <div class="card">
+          <h3>Cas12a 核酸酶</h3>
+          <p>来源于 Acidaminococcus sp. 或 Lachnospiraceae bacterium，适用于 CRISPR 检测、基因编辑等方向。</p>
+        </div>
+        <div class="card">
+          <h3>T7 RNA 聚合酶</h3>
+          <p>用于体外转录、RNA 合成，高纯度，活性稳定，适合常规分子生物学实验。</p>
+        </div>
+        <div class="card">
+          <h3>其他核酸相关酶</h3>
+          <p>DNase I、RNase 抑制剂、连接酶、逆转录酶等，可咨询具体产品与规格。</p>
+        </div>
+        <div class="card">
+          <h3>定制表达与纯化</h3>
+          <p>可按你的序列定制表达 Cas 蛋白、T7 RNA 聚合酶等，提供标签切除和质检。</p>
+        </div>
+        <div class="card">
+          <h3>酶活性检测</h3>
+          <p>提供切割活性、转录活性等检测服务，确保批次质量稳定。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" style="background:#fff;">
+    <div class="container">
+      <h2 class="section-title">服务与订购流程</h2>
+      <p class="section-desc">从需求沟通到交付，关键节点反馈，方便你掌握进度。</p>
+      <div class="steps">
+        <div class="step">
+          <h4>需求沟通</h4>
+          <p>确认蛋白/酶名称、序列、纯度、活性、用量和交付要求。</p>
+        </div>
+        <div class="step">
+          <h4>方案与选型</h4>
+          <p>选择表达系统、标签、纯化方案，或确认酶产品规格。</p>
+        </div>
+        <div class="step">
+          <h4>构建与生产</h4>
+          <p>基因合成或亚克隆、表达筛选，或酶发酵与诱导表达。</p>
+        </div>
+        <div class="step">
+          <h4>纯化与质检</h4>
+          <p>亲和纯化、纯度检测、浓度测定与活性验证。</p>
+        </div>
+        <div class="step">
+          <h4>交付与售后</h4>
+          <p>交付蛋白/酶、报告与缓冲液，并提供技术答疑。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="delivery" class="container">
+    <h2 class="section-title">交付与质控</h2>
+    <p class="section-desc">蛋白表达服务和核酸酶产品均按约定标准交付。</p>
+    <div class="grid">
+      <div class="card">
+        <h3>纯化蛋白 / 酶</h3>
+        <p>按约定缓冲液、浓度和分装量交付，便于后续实验使用。</p>
+      </div>
+      <div class="card">
+        <h3>质检报告</h3>
+        <p>提供 SDS-PAGE、浓度、纯度、活性检测结果和实验记录。</p>
+      </div>
+      <div class="card">
+        <h3>标签切除</h3>
+        <p>如需要，可进行 His、GST、MBP 等标签切除和后续纯化。</p>
+      </div>
+      <div class="card">
+        <h3>活性验证</h3>
+        <p>可根据蛋白或酶类型，安排切割活性、转录活性或其他功能验证。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" style="background:#fff;">
+    <div class="container">
+      <h2 class="section-title">为什么选择我们</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>面向科研需求</h3>
+          <p>服务高校和科研院所，理解科研项目对周期、纯度和数据的要求。</p>
+        </div>
+        <div class="card">
+          <h3>自产核酸酶</h3>
+          <p>Cas9、Cas12a、T7 RNA 聚合酶等自产，批次稳定，性价比高。</p>
+        </div>
+        <div class="card">
+          <h3>方案灵活</h3>
+          <p>可定制表达，也可直接订购现货酶产品，按需选择。</p>
+        </div>
+        <div class="card">
+          <h3>保密承诺</h3>
+          <p>对客户提供的序列、质粒和实验数据严格保密，不擅自使用或转交。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="container">
+    <h2 class="section-title">常见问题</h2>
+    <div class="faq-item">
+      <h3>蛋白表达周期一般多久？</h3>
+      <p>根据表达系统和难度不同，通常从几周到一两个月不等。具体周期需根据基因、载体、表达量和纯化要求评估。</p>
+    </div>
+    <div class="faq-item">
+      <h3>核酸酶产品有哪些？</h3>
+      <p>目前主要有 Cas9、Cas12a、T7 RNA 聚合酶等核酸相关酶。其他酶如 DNase I、RNase 抑制剂、连接酶等可咨询。</p>
+    </div>
+    <div class="faq-item">
+      <h3>酶活性单位怎么定义？</h3>
+      <p>不同酶有不同活性定义，通常会在产品说明或质检报告中注明。具体可邮件或电话沟通。</p>
+    </div>
+    <div class="faq-item">
+      <h3>是否提供试用装？</h3>
+      <p>部分酶产品可提供小规格试用装，具体视产品库存和批次而定，欢迎询价。</p>
+    </div>
+    <div class="faq-item">
+      <h3>保存和运输条件？</h3>
+      <p>酶产品一般建议 -20°C 或 -80°C 保存，运输方式会根据产品稳定性安排，具体以产品说明为准。</p>
+    </div>
+    <div class="faq-item">
+      <h3>怎么报价？</h3>
+      <p>蛋白表达服务根据表达系统、基因长度、纯化方式、检测项目和交付量综合报价；酶产品按规格和数量报价。</p>
+    </div>
+    <div class="faq-item">
+      <h3>序列和实验数据会保密吗？</h3>
+      <p>会。客户提供的序列、质粒、菌株和实验数据仅用于本项目，不擅自使用或转交第三方。</p>
+    </div>
+  </section>
+
+  <section id="contact" style="background:#fff;">
+    <div class="container contact-wrap">
+      <div class="contact-info">
+        <h2 class="section-title">获取报价</h2>
+        <p>请提供蛋白/酶名称、序列或基因信息、表达系统要求、标签、纯度、活性与用量。我们会在 1 个工作日内回复。</p>
+        <p><strong>邮箱：</strong><a href="mailto:839841061@qq.com">839841061@qq.com</a></p>
+        <p><strong>电话/微信：</strong><a href="tel:13129903487">13129903487</a></p>
+        <p><strong>服务对象：</strong>高校、科研院所、医院研究团队</p>
+      </div>
+      <form id="quoteForm">
+        <label for="name">姓名 / 单位</label>
+        <input id="name" name="name" required placeholder="张三 / XX大学">
+        <label for="email">邮箱</label>
+        <input id="email" name="email" type="email" required placeholder="you@example.com">
+        <label for="phone">电话 / 微信</label>
+        <input id="phone" name="phone" placeholder="方便联系的电话或微信">
+        <label for="service">需要的服务 / 产品</label>
+        <select id="service" name="service">
+          <option>蛋白表达服务</option>
+          <option>购买 Cas9</option>
+          <option>购买 Cas12a</option>
+          <option>购买 T7 RNA 聚合酶</option>
+          <option>购买其他核酸酶</option>
+          <option>定制蛋白 / 酶</option>
+          <option>其他 / 不确定</option>
+        </select>
+        <label for="message">项目描述</label>
+        <textarea id="message" name="message" placeholder="蛋白/酶名称、序列长度、标签、纯度要求、活性要求、交付量等"></textarea>
+        <button class="btn" type="submit">提交询价</button>
+        <p id="formMsg" style="color:var(--primary); margin-top:.8rem; display:none;">
+          已生成邮件内容。如果未自动打开邮件客户端，请手动发送至 839841061@qq.com。
+        </p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <strong>科研蛋白表达与核酸酶</strong>
+      <p>高校与科研院所重组蛋白表达与核酸酶产品。</p>
+    </div>
+    <div>
+      <strong>快速链接</strong>
+      <p><a href="#services">蛋白表达</a></p>
+      <p><a href="#nucleases">核酸酶产品</a></p>
+      <p><a href="#contact">获取报价</a></p>
+    </div>
+    <div>
+      <strong>联系</strong>
+      <p>邮箱：839841061@qq.com</p>
+      <p>电话/微信：13129903487</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.nav-links a').forEach(function(link) {
+  link.addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.remove('open');
+  });
+});
+
+document.getElementById('quoteForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  var name = document.getElementById('name').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var phone = document.getElementById('phone').value.trim();
+  var service = document.getElementById('service').value;
+  var message = document.getElementById('message').value.trim();
+
+  var subject = '蛋白/核酸酶询价 - ' + (name || '未填写姓名');
+  var body =
+    '姓名/单位：' + name + '\n' +
+    '邮箱：' + email + '\n' +
+    '电话/微信：' + phone + '\n' +
+    '需要的服务/产品：' + service + '\n' +
+    '项目描述：' + message;
+
+  var mailto = 'mailto:839841061@qq.com' +
+    '?subject=' + encodeURIComponent(subject) +
+    '&body=' + encodeURIComponent(body);
+
+  document.getElementById('formMsg').style.display = 'block';
+  window.location.href = mailto;
+});
+</script>
+
+</body>
+</html>
